@@ -19,15 +19,15 @@ const scrollToTop = () => {
 };
 
 const sizes = [
-    { cardWidth: "200px", borderRadius: "10px", cardMargin: "5px", imageMaxWidth: "175px", avatarSize: "20px", largeFontSize: "10px", mediumFontSize:"8px", smallFontSize: "6px" },
-    { cardWidth: "300px", borderRadius: "12px", cardMargin: "8px", imageMaxWidth: "275px", avatarSize: "30px", largeFontSize: "16px", mediumFontSize:"12px", smallFontSize: "8px" },
-    { cardWidth: "400px", borderRadius: "15px", cardMargin: "10px", imageMaxWidth: "375px", avatarSize: "40px", largeFontSize: "22px", mediumFontSize:"16px", smallFontSize: "10px" },
-    { cardWidth: "500px", borderRadius: "18px", cardMargin: "15px", imageMaxWidth: "475px", avatarSize: "50px", largeFontSize: "28px", mediumFontSize:"20px", smallFontSize: "12px" },
-    { cardWidth: "600px", borderRadius: "20px", cardMargin: "20px", imageMaxWidth: "575px", avatarSize: "60px", largeFontSize: "36px", mediumFontSize:"24px", smallFontSize: "15px" },
-    { cardWidth: "700px", borderRadius: "22px", cardMargin: "25px", imageMaxWidth: "675px", avatarSize: "70px", largeFontSize: "42px", mediumFontSize:"28px", smallFontSize: "20px" },
-    { cardWidth: "800px", borderRadius: "25px", cardMargin: "30px", imageMaxWidth: "775px", avatarSize: "80px", largeFontSize: "48px", mediumFontSize:"34px", smallFontSize: "26px" },
-    { cardWidth: "900px", borderRadius: "28px", cardMargin: "35px", imageMaxWidth: "875px", avatarSize: "90px", largeFontSize: "54px", mediumFontSize:"42px", smallFontSize: "34px" },
-    { cardWidth: "1000px", borderRadius: "30px", cardMargin: "40px", imageMaxWidth: "975px", avatarSize: "100px", largeFontSize: "62px", mediumFontSize:"54px", smallFontSize: "40px" },
+    { cardWidth: "200px", borderRadius: "10px", cardMargin: "5px", imageMaxWidth: "160px", avatarSize: "20px", largeFontSize: "10px", mediumFontSize:"8px", smallFontSize: "6px", paginationSize: "small" },
+    { cardWidth: "300px", borderRadius: "12px", cardMargin: "8px", imageMaxWidth: "260px", avatarSize: "30px", largeFontSize: "16px", mediumFontSize:"12px", smallFontSize: "8px", paginationSize: "small" },
+    { cardWidth: "400px", borderRadius: "15px", cardMargin: "10px", imageMaxWidth: "360px", avatarSize: "40px", largeFontSize: "22px", mediumFontSize:"16px", smallFontSize: "10px", paginationSize: "small" },
+    { cardWidth: "500px", borderRadius: "18px", cardMargin: "15px", imageMaxWidth: "460px", avatarSize: "50px", largeFontSize: "28px", mediumFontSize:"20px", smallFontSize: "12px", paginationSize: "medium" },
+    { cardWidth: "600px", borderRadius: "20px", cardMargin: "20px", imageMaxWidth: "560px", avatarSize: "60px", largeFontSize: "36px", mediumFontSize:"24px", smallFontSize: "15px", paginationSize: "medium" },
+    { cardWidth: "700px", borderRadius: "22px", cardMargin: "25px", imageMaxWidth: "660px", avatarSize: "70px", largeFontSize: "42px", mediumFontSize:"28px", smallFontSize: "20px", paginationSize: "medium" },
+    { cardWidth: "800px", borderRadius: "25px", cardMargin: "30px", imageMaxWidth: "760px", avatarSize: "80px", largeFontSize: "48px", mediumFontSize:"34px", smallFontSize: "26px", paginationSize: "large" },
+    { cardWidth: "900px", borderRadius: "28px", cardMargin: "35px", imageMaxWidth: "860px", avatarSize: "90px", largeFontSize: "54px", mediumFontSize:"42px", smallFontSize: "34px", paginationSize: "large" },
+    { cardWidth: "1000px", borderRadius: "30px", cardMargin: "40px", imageMaxWidth: "960px", avatarSize: "100px", largeFontSize: "62px", mediumFontSize:"54px", smallFontSize: "40px", paginationSize: "large" },
 ]
 
 export const ScrollView = () => {
@@ -67,7 +67,7 @@ export const ScrollView = () => {
     const slicedData = filteredData.slice(startIndex, endIndex);
 
     return (
-        <>
+        <div style={{ height: "100%" }}>
             <ResponsiveAppBar setCurSize={setCurSize} maxSize={sizes.length - 1}/>
             <Container sx={{width: currentSize["cardWidth"]}}>
                 <Card sx={{ marginTop: currentSize["cardMargin"], borderRadius: currentSize["borderRadius"], width: currentSize["cardWidth"] }}>
@@ -90,7 +90,7 @@ export const ScrollView = () => {
                     );
                 })}
                 <Stack alignItems="center" sx={{ marginTop: currentSize["cardMargin"], marginBottom: currentSize["cardMargin"] }}>
-                    <Pagination count={totalPages} variant="outlined" onChange={(e, v)=>{scrollToTop(); setPage(v);}} size="large"/>
+                    <Pagination count={totalPages} variant="outlined" onChange={(e, v)=>{scrollToTop(); setPage(v);}} size={currentSize["paginationSize"]}/>
                 </Stack>
             </Container> 
             <Modal
@@ -101,6 +101,6 @@ export const ScrollView = () => {
                 {modalContent}
                 </>
             </Modal>
-        </>
+        </div>
     );
 }
