@@ -15,9 +15,9 @@ start_page = 1
 # Download media files (images, videos, etc.)?
 media = True
 # Folder ID
-folder_id = "YOUR FOLDER ID"
+folder_id = ""
 # Authorization token
-token = "YOUR TOKEN HERE"
+token = ""
 # Redownload files already downloaded?
 redownload = False
 # Verbose output?
@@ -89,7 +89,7 @@ if __name__ == '__main__':
             # if the tweet is already downloaded, skip
             if not redownload:
                 timestring = calendar.timegm(time.strptime(str(tweet["tweet_date"]), "%I:%M %p, %b %d, %Y"))
-                filename = path + str(timestring) + "-" + tweet["tweet_id"] + ".json"
+                filename = "src/" + path + str(timestring) + "-" + tweet["tweet_id"] + ".json"
                 if Path(filename).is_file():
                     if verbose:
                         print("Skipping " + filename)
@@ -139,6 +139,7 @@ if __name__ == '__main__':
 
         if page == int(data["total_pages"]):
             break
+
         page += 1
 
     print("Finished download")
