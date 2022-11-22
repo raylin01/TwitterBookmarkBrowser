@@ -1,4 +1,4 @@
-# Using Dewey Twitter Bookmark Downloader
+# Using Twitter Bookmark Downloader
 
 This is a Twitter Bookmark downloader so you can keep and view your Twitter Bookmarks locally. We will be using Dewey to scrape Twitter bookmarks, then running the script to download all the data from Dewey and Twitter CDNs, and finally running our own server to view the downloaded bookmarks.
 
