@@ -53,7 +53,7 @@ export const ScrollView = () => {
     const endIndex = page * pageSize;
 
     const filteredData = samplejson.filter((item)=>{
-        return item.posted_by.toLowerCase().includes(searchQuery.toLowerCase()) || item.posted_by.toLowerCase().includes(searchQuery.toLowerCase());
+        return item.posted_by.toLowerCase().includes(searchQuery.toLowerCase()) || item.tweet_date.toLowerCase().includes(searchQuery.toLowerCase()) || item.posted_by_nickname.toLowerCase().includes(searchQuery.toLowerCase()) || item.tweet_content.toLowerCase().includes(searchQuery.toLowerCase());
     }).sort((a, b) => {
         if (!sortDirection){
             return (a.tweet_id - b.tweet_id);
